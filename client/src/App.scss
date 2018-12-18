@@ -1,0 +1,18 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700');
+//font-family: 'Merriweather', serif;
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700');
+//font-family: 'Playfair Display', serif;
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+//font-family: 'Crimson Text', serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    color: #2d3436;
+    font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont, sans-serif;
+}
