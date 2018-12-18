@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { connect, } from 'react-redux';
 
 
-class NewBlog extends React.Component {
-    state = {
+class BlogForm extends React.Component {
+    initialState = {
         title: "",
-        body: ""
+        body: "",
+        claps: 0
     }
+    state = { ...this.initialState }
 
     handleChange = ({target: {name, value}}) => {
         this.setState({
@@ -17,16 +19,6 @@ class NewBlog extends React.Component {
     }
 
     handleSubmit = (e) => {
-        let { title, body } = this.state;
-        e.preventDefault();
-        const { dispatch, id } = this.props;
-        dispatch({ type: "ADD_BLOG", blog: { id, title, body } })
-        dispatch({ type: 'INC_ID' })
-        this.setState({
-            title: "",
-            body: ""
-        })
-        this.props.history.push('/');
     }
 
     resizeInputs = () => {
@@ -50,7 +42,7 @@ class NewBlog extends React.Component {
         let { title, body } = this.state;
         return (
             <BlogContainer>
-                <BlogForm onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
                     <textarea
                         placeholder="Title"
                         name="title"
@@ -75,7 +67,7 @@ class NewBlog extends React.Component {
                         value="Submit"
                         className="submit"
                     />
-                </BlogForm>
+                </Form>
             </BlogContainer>
         )
     }
@@ -93,7 +85,7 @@ const BlogContainer = styled.div`
     justify-content: flex-start;
 `;
 
-const BlogForm = styled.form`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -166,4 +158,4 @@ const mapStateToProps = (state) => {
     return { id: state.nextId }
   }
 
-export default connect(mapStateToProps)(NewBlog);
+export default connect(mapStateToProps)(BlogForm);
