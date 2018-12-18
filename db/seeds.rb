@@ -9,7 +9,7 @@
 20.times do
     Blog.create(
        title: Faker::Book.title,
-       body: Faker::Lovecraft.paragraphs(4),
+       body: Faker::Lovecraft.paragraph(6),
        claps: Faker::Number.between(0, 1000)
     )
 end

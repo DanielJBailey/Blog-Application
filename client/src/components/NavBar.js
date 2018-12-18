@@ -22,6 +22,7 @@ const Nav = styled.ul`
     align-items: center;
     justify-content: flex-end;
     padding: 1em;
+    z-index: 99;
     /* box-shadow: 2px 2px 10px rgba(0,0,0,0.1); */
 
     a {
@@ -35,7 +36,7 @@ const Nav = styled.ul`
 
         &:first-child {
             margin-right: auto;
-            background-color: #2d3436;
+            background-color: #00b894;
             cursor: pointer;
             width: 50px;
             height: 50px;
