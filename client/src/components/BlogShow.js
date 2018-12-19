@@ -4,20 +4,27 @@ import styled from 'styled-components'
 
 const BlogShow = ({ blog = {},}) => {
   return (
-    <BlogPost>
-      <img src='https://picsum.photos/1000/400/?random' alt='' />
-      <BlogContent>
-        <h1 className='title'>{blog.title}</h1>
-        <hr />
-        <p className='body'>{blog.body}</p>
-      </BlogContent> 
-    </BlogPost>
+    <BlogContainer>
+        <BlogPost>
+        <img src='https://picsum.photos/1000/400/?random' alt='' />
+        <BlogContent>
+            <h1 className='title'>{blog.title}</h1>
+            <hr />
+            <p className='body'>{blog.body}</p>
+        </BlogContent> 
+        </BlogPost>
+    </BlogContainer>
   )
 }
 
+const BlogContainer = styled.div`
+    padding: 100px 0;
+`;
+
 const BlogPost = styled.div`
   width: 100%;
-  margin: 1em 0;
+  max-width: 1000px;
+  margin: 1em auto;
   box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;

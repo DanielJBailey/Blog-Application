@@ -9,7 +9,7 @@
 20.times do
     Blog.create(
        title: Faker::Book.title,
-       body: Faker::Lovecraft.paragraph(6),
+       body: Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n" + Faker::Lovecraft.paragraph + Faker::Lovecraft.paragraph + "\n\n",
        claps: Faker::Number.between(0, 1000)
     )
 end

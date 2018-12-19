@@ -38,7 +38,7 @@ class Blog extends React.Component {
                 <BlogContent>
                 <h1 className='title'>{title}</h1>
                 <hr />
-                <p className='body'>{body.substring(0, 1000) + '...'}</p>
+                <p className='body'>{body.substring(0, 500) + '...'}</p>
                 <BlogFooter>
                     <Link to={`/blogs/${id}`}>
                         <button>Read More</button>
