@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 /node_modules
+.vscode
 
 # ignore client node modules
 /client/node_modules
