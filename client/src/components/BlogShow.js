@@ -17,25 +17,28 @@ const BlogShow = ({ blog = {} }) => {
           <img src='https://picsum.photos/800/400?random' alt='' />
         </ImageContainer>
       </BlogHeader>
-      <BlogBody>
-          
-      </BlogBody>
+      <p className="body">{blog.body}</p>
     </BlogContainer>
   )
 }
 
 const BlogHeader = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 `
 
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 50%;
-  padding: 2em 2em 2em 0;
+  align-items: flex-start;
   margin-bottom: 40px;
+  max-width: 500px;
+  width: 100%;
+  padding: 60px 60px 32px 0;
+  margin-left: auto;
   .title {
     font-size: 50px;
     line-height: 64px;
@@ -57,9 +60,16 @@ const ImageContainer = styled.div`
 `
 
 const BlogContainer = styled.div`
-  padding: 82px 0;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 82px 100px;
+  .body {
+    white-space: pre-wrap;
+    max-width: 800px;
+    margin: 100px auto 100px;
+    line-height: 1.58;
+    font-size: 22px;
+    font-family: 'Crimson Text', serif;
+    font-weight: 300;
+  }
 `
 
 const mapStateToProps = (state, props) => {

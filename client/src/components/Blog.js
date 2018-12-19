@@ -13,8 +13,6 @@ class Blog extends React.Component {
         let {claps} = this.props;
         this.setState({
             claps: claps
-        }, () => {
-            console.log(this.state)
         })
     }
 

@@ -7,10 +7,11 @@ const DELETE = "DELETE_BLOG";
 
 // REDUX ACTIONS
 
-export const getBlogs = () => {
+export const getBlogs = (cb) => {
   return (dispatch) => {
     axios.get('/api/blogs')
     .then(res => dispatch({ type: BLOGS, blogs: res.data}))
+    .then( cb );
   }
 }
 
@@ -22,14 +23,14 @@ export const addBlog = (blog) => {
 }
 
 
-export const updateApp = (blog) => {
+export const updateBlog = (blog, id) => {
   return (dispatch) => {
-    axios.put(`/api/blogs/${blog.id}`, { blog })
+    axios.put(`/api/blogs/${id}`, { blog })
     .then(res => dispatch({ type: UPDATE, blog: res.data }))
   }
 }
 
-export const deleteApp = (id) => {
+export const deleteBlog = (id) => {
   return (dispatch) => {
     axios.delete(`/api/blogs/${id}`)
     .then( () => dispatch({ type: DELETE, id }))
