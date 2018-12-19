@@ -23,7 +23,7 @@ const Nav = styled.ul`
     justify-content: flex-end;
     padding: 1em;
     z-index: 99;
-    /* box-shadow: 2px 2px 10px rgba(0,0,0,0.1); */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 
     a {
         text-decoration: none;

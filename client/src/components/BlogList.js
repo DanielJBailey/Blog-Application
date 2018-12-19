@@ -40,20 +40,6 @@ const BlogContainer = styled.div`
   }
 `
 
-// const CreatePost = styled.button`
-//   padding: 10px 15px;
-//   border: 2px solid #2d3436;
-//   background-color: white;
-//   cursor: pointer;
-//   font-size: 14px;
-//   margin-top: 25px;
-//   color: #2d3436;
-//   &:hover {
-//     background-color: #2d3436;
-//     color: white;
-//   }
-// `
-
 const mapStateToProps = (state) => {
   return {blogs: state.blogs, }
 }
