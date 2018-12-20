@@ -4,6 +4,11 @@ import {Link, } from 'react-router-dom';
 import styled from 'styled-components'
 
 const BlogShow = ({ blog = {}, blogs={} }) => {
+
+  let blogsShown = blogs;
+  // Set the number of sample blogs to show in sidebar
+  blogsShown = blogsShown.slice(0,5);
+  console.log(blogsShown);
   return (
     <BlogContainer>
       <BlogHeader>
@@ -20,7 +25,7 @@ const BlogShow = ({ blog = {}, blogs={} }) => {
       </BlogHeader>
       <BlogBody>
         <SideBar>
-          {blogs.map(blog => 
+          {blogsShown.map(blog => 
             <div key={blog.id} className="sample-blog">
               <p className="blog-title">{blog.title}</p>
               <p className="blog-body">{blog.body.substring(0, 100) + '...'}</p>
@@ -143,7 +148,7 @@ const BlogContainer = styled.div`
 const mapStateToProps = (state, props) => {
   return {
     blog: state.blogs.find(blog => blog.id === parseInt(props.match.params.id)),
-    blogs: state.blogs.slice(0,3)
+    blogs: state.blogs.filter(blog => blog.id !== parseInt(props.match.params.id))
   }
 }
 
