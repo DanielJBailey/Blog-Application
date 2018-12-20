@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getBlogs } from '../reducers/blogs'
 import Blog from './Blog'
 import { SearchConsumer } from '../providers/SearchProvider'
+import NavBar from './NavBar';
 
 class BlogList extends React.Component {
   componentDidMount () {
@@ -14,25 +15,28 @@ class BlogList extends React.Component {
   render () {
     let { blogs } = this.props;
     return (
-      <BlogContainer>
-        <SearchConsumer>
-          {value => (
-            <>
-              {value.search.length > 0 ? 
-                blogs.filter(blog => (
-                  blog.title.toLowerCase().includes(value.search.toLowerCase())
-                )).map(blog => (
-                  <Blog key={blog.id} {...blog} />
-                ))
-              :
-                blogs.map(blog => (
-                  <Blog key={blog.id} {...blog} />
-                ))
-              }        
-            </>
-          )}
-        </SearchConsumer>
-      </BlogContainer>
+      <>
+        <NavBar show={true}/>
+        <BlogContainer>
+          <SearchConsumer>
+            {value => (
+              <>
+                {value.search.length > 0 ? 
+                  blogs.filter(blog => (
+                    blog.title.toLowerCase().includes(value.search.toLowerCase())
+                  )).map(blog => (
+                    <Blog key={blog.id} {...blog} />
+                  ))
+                :
+                  blogs.map(blog => (
+                    <Blog key={blog.id} {...blog} />
+                  ))
+                }        
+              </>
+            )}
+          </SearchConsumer>
+        </BlogContainer>
+      </>
     )
   }
 }

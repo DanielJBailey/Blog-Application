@@ -3,27 +3,29 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { SearchConsumer } from '../providers/SearchProvider'
 
-const NavBar = () => {
-  return (
-    <SearchConsumer>
-      {value => (
-        <Nav>
-          <Link to='/' className='logo'>
-            D
-          </Link>
-          <Search
-            placeholder='Search blogs...'
-            value={value.search}
-            name='search'
-            onChange={value.handleChange}
-          />
-          <Link to={'/blogs/new'}>New Post</Link>
-        </Nav>
-      )}
-    </SearchConsumer>
-  )
+class NavBar extends React.Component {
+  render () {
+    let {show} = this.props;
+    return (
+      <SearchConsumer>
+        {value => (
+          <Nav>
+            <Link to='/' className='logo'>
+              D
+            </Link>
+            {show ? <Search
+              placeholder='Search blogs...'
+              value={value.search}
+              name='search'
+              onChange={value.handleChange}
+            /> : null}
+            <Link to={'/blogs/new'}>New Post</Link>
+          </Nav>
+        )}
+      </SearchConsumer>
+    )
+  }
 }
-
 const Search = styled.input`
   width: 250px;
   height: 42px;

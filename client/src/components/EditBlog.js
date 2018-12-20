@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { getBlogs, updateBlog } from '../reducers/blogs'
 import Swal from 'sweetalert2'
+import NavBar from './NavBar';
+
 
 class EditBlog extends React.Component {
   state = {
@@ -68,38 +70,41 @@ class EditBlog extends React.Component {
   render () {
     let { title, body } = this.state
     return (
-      <BlogContainer>
-        <Form onSubmit={this.handleSubmit}>
-          <textarea
-            placeholder='Title'
-            name='title'
-            value={title}
-            required
-            className='title-input'
-            autoFocus
-            style={
-              title === ''
-                ? { caretColor: '#b2bec3' }
-                : { caretColor: '#2d3436' }
-            }
-            onChange={this.handleChange}
-          />
-          <textarea
-            placeholder='Tell your story...'
-            name='body'
-            value={body}
-            required
-            style={
-              title === ''
-                ? { caretColor: '#b2bec3' }
-                : { caretColor: '#2d3436' }
-            }
-            onChange={this.handleChange}
-            className='body-input'
-          />
-          <input type='submit' value='Submit' className='submit' />
-        </Form>
-      </BlogContainer>
+      <>
+        <NavBar show={false}/>
+        <BlogContainer>
+          <Form onSubmit={this.handleSubmit}>
+            <textarea
+              placeholder='Title'
+              name='title'
+              value={title}
+              required
+              className='title-input'
+              autoFocus
+              style={
+                title === ''
+                  ? { caretColor: '#b2bec3' }
+                  : { caretColor: '#2d3436' }
+              }
+              onChange={this.handleChange}
+            />
+            <textarea
+              placeholder='Tell your story...'
+              name='body'
+              value={body}
+              required
+              style={
+                title === ''
+                  ? { caretColor: '#b2bec3' }
+                  : { caretColor: '#2d3436' }
+              }
+              onChange={this.handleChange}
+              className='body-input'
+            />
+            <input type='submit' value='Submit' className='submit' />
+          </Form>
+        </BlogContainer>
+      </>
     )
   }
 }
