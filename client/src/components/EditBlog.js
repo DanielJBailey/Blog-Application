@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import {getBlogs, updateBlog} from "../reducers/blogs";
-import Swal from 'sweetalert2';
-
+import React from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { getBlogs, updateBlog } from '../reducers/blogs'
+import Swal from 'sweetalert2'
 
 class EditBlog extends React.Component {
   state = {
@@ -13,17 +12,18 @@ class EditBlog extends React.Component {
     loaded: false
   }
 
-  componentDidUpdate() {
-    let {loaded} = this.state;
-    this.resizeInputs();
-    if(!loaded) {
+  componentDidUpdate () {
+    let { loaded } = this.state
+    this.resizeInputs()
+    if (!loaded) {
       this.setState({
-        ...this.props.blog, loaded: true
+        ...this.props.blog,
+        loaded: true
       })
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.dispatch(getBlogs())
   }
 
@@ -33,19 +33,19 @@ class EditBlog extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
-    let {push} = this.props.history;
-    e.preventDefault();
-    const {id} = this.props.match.params;
-    const blog = { ...this.state, };
-    const { dispatch, } = this.props;
-    dispatch(updateBlog(blog, id));
+  handleSubmit = e => {
+    let { push } = this.props.history
+    e.preventDefault()
+    const { id } = this.props.match.params
+    const blog = { ...this.state }
+    const { dispatch } = this.props
+    dispatch(updateBlog(blog, id))
     Swal({
       type: 'success',
       title: 'Blog Updated',
       text: 'You have patched forth your changes!'
-    });
-    push(`/blogs/${id}`);
+    })
+    push(`/blogs/${id}`)
   }
 
   resizeInputs = () => {
@@ -183,7 +183,9 @@ const Form = styled.form`
 `
 
 const mapStateToProps = (state, props) => {
-  return { blog: state.blogs.find(blog  => blog.id === parseInt(props.match.params.id))}
+  return {
+    blog: state.blogs.find(blog => blog.id === parseInt(props.match.params.id))
+  }
 }
 
 export default connect(mapStateToProps)(EditBlog)

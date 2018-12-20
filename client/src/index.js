@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Provider store={Store}>
-        <Router >
+        <Router>
             <App />
         </Router>
     </Provider>, 
