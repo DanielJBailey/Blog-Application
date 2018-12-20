@@ -27,7 +27,6 @@ class NavBar extends React.Component {
   }
 }
 const Search = styled.input`
-  width: 250px;
   height: 42px;
   padding: 10px;
   font-size: 14px;
@@ -40,6 +39,12 @@ const Search = styled.input`
   &::placeholder {
     padding-left: 5px;
     color: rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 425px) {
+    margin-right: 0;
+  }
+  @media (min-width: 768px) {
+    width: 300px;
   }
 `
 
@@ -58,8 +63,8 @@ const Nav = styled.ul`
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    padding: 1em;
-  }
+    padding: 10px 5px;
+  } 
 
   a {
     text-decoration: none;
@@ -67,8 +72,17 @@ const Nav = styled.ul`
     background-color: transparent;
     border: 2px solid #2d3436;
     margin: 0 5px;
+    height: 42px;
     color: #2d3436;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 425px) {
+      padding: 5px;
+      font-size: 12px;
+    }
 
     &:first-child {
       margin-right: auto;
@@ -93,10 +107,6 @@ const Nav = styled.ul`
     &:hover {
       background-color: #2d3436;
       color: white;
-    }
-
-    &:last-child {
-      margin-right: 0;
     }
   }
 `
