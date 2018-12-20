@@ -58,12 +58,12 @@ const BlogShow = ({ blog = {}, blogs = {}, dispatch, history }) => {
         </SideBar>
         <BlogText>
           <SocialBar>
-            <div className='claps-container'>
+            <ClapsContainer>
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                 <path d='M496.656 285.683C506.583 272.809 512 256 512 235.468c-.001-37.674-32.073-72.571-72.727-72.571h-70.15c8.72-17.368 20.695-38.911 20.695-69.817C389.819 34.672 366.518 0 306.91 0c-29.995 0-41.126 37.918-46.829 67.228-3.407 17.511-6.626 34.052-16.525 43.951C219.986 134.75 184 192 162.382 203.625c-2.189.922-4.986 1.648-8.032 2.223C148.577 197.484 138.931 192 128 192H32c-17.673 0-32 14.327-32 32v256c0 17.673 14.327 32 32 32h96c17.673 0 32-14.327 32-32v-8.74c32.495 0 100.687 40.747 177.455 40.726 5.505.003 37.65.03 41.013 0 59.282.014 92.255-35.887 90.335-89.793 15.127-17.727 22.539-43.337 18.225-67.105 12.456-19.526 15.126-47.07 9.628-69.405zM32 480V224h96v256H32zm424.017-203.648C472 288 472 336 450.41 347.017c13.522 22.76 1.352 53.216-15.015 61.996 8.293 52.54-18.961 70.606-57.212 70.974-3.312.03-37.247 0-40.727 0-72.929 0-134.742-40.727-177.455-40.727V235.625c37.708 0 72.305-67.939 106.183-101.818 30.545-30.545 20.363-81.454 40.727-101.817 50.909 0 50.909 35.517 50.909 61.091 0 42.189-30.545 61.09-30.545 101.817h111.999c22.73 0 40.627 20.364 40.727 40.727.099 20.363-8.001 36.375-23.984 40.727zM104 432c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24z' />
               </svg>
-              <p className='claps'>{blog.claps}</p>
-            </div>
+              <Claps>{blog.claps}</Claps>
+            </ClapsContainer>
             <div className='social-icons'>
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
                 <path d='M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 11.1 24.8 24.7z' />
@@ -116,6 +116,28 @@ const AdminBar = styled.div`
   }
 `
 
+const ClapsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    fill: #2d3436;
+  }
+`
+
+const Claps = styled.p`
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px;
+  color: #2d3436;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.2);
+`
+
 const SocialBar = styled.div`
   width: 100%;
   height: 50px;
@@ -125,34 +147,12 @@ const SocialBar = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 50px 1em;
-  margin-bottom: 20px;
-
-  .claps-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    svg {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-      fill: #2d3436;
-    }
-    .claps {
-      font-size: 14px;
-      border-radius: 5px;
-      padding: 5px;
-      color: #2d3436;
-      font-weight: bold;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-  }
+  margin-bottom: 20px;  
 
   .social-icons {
     svg {
       width: 20px;
       height: 20px;
-      fill: #2d3436;
       margin-left: 10px;
     }
   }
@@ -230,7 +230,7 @@ const BlogBody = styled.div`
   }
 `
 
-const BlogText = styled.p`
+const BlogText = styled.div`
   white-space: pre-wrap;
   max-width: 800px;
   margin: 100px auto 100px;
@@ -238,7 +238,7 @@ const BlogText = styled.p`
   font-size: 22px;
   font-family: 'Crimson Text', serif;
   font-weight: 300;
-  @media(max-width: 1000px) {
+  @media (max-width: 1000px) {
     margin: 50px auto 100px;
     padding: 0 1em;
   }
@@ -288,8 +288,8 @@ const ImageContainer = styled.div`
     width: 100%;
   }
   @media (max-width: 1000px) {
-    width: 100%;
-    height: 400px;
+    width: 100vw;
+    height: 300px;
   }
 `
 

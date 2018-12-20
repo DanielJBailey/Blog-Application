@@ -6,14 +6,17 @@ import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import ScrollToTop from './components/ScrollToTop';
+import SearchProvider from './providers/SearchProvider';
 
 ReactDOM.render(
     <Provider store={Store}>
-        <Router>
-            <ScrollToTop>
-                <App />
-            </ScrollToTop>
-        </Router>
+        <SearchProvider>
+            <Router>
+                <ScrollToTop>
+                    <App />
+                </ScrollToTop>
+            </Router>
+        </SearchProvider>
     </Provider>, 
     document.getElementById('root')
 );

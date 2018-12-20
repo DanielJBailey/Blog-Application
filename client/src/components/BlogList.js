@@ -2,22 +2,36 @@ import React from 'react'
 import styled from 'styled-components'
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getBlogs } from '../reducers/blogs';
+import { getBlogs } from '../reducers/blogs'
 import Blog from './Blog'
+import { SearchConsumer } from '../providers/SearchProvider'
 
 class BlogList extends React.Component {
-
   componentDidMount () {
     this.props.dispatch(getBlogs())
   }
 
   render () {
-    let {blogs} = this.props;
+    let { blogs } = this.props;
     return (
       <BlogContainer>
-        {blogs.map(blog => (
-                <Blog key={blog.id} {...blog}/>
-            ))}
+        <SearchConsumer>
+          {value => (
+            <>
+              {value.search.length > 0 ? 
+                blogs.filter(blog => (
+                  blog.title.toLowerCase().includes(value.search.toLowerCase())
+                )).map(blog => (
+                  <Blog key={blog.id} {...blog} />
+                ))
+              :
+                blogs.map(blog => (
+                  <Blog key={blog.id} {...blog} />
+                ))
+              }        
+            </>
+          )}
+        </SearchConsumer>
       </BlogContainer>
     )
   }
@@ -40,8 +54,8 @@ const BlogContainer = styled.div`
   }
 `
 
-const mapStateToProps = (state) => {
-  return {blogs: state.blogs, }
+const mapStateToProps = state => {
+  return { blogs: state.blogs }
 }
 
 export default connect(mapStateToProps)(BlogList)

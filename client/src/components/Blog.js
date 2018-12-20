@@ -63,10 +63,19 @@ const BlogPost = styled.div`
   border-radius: 10px;
   position: relative;
 
+  @media(max-width: 1000px) {
+    border-radius: none;
+    box-shadow: none;
+  }
+
   img {
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    @media(max-width: 1000px) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
   .title {
@@ -136,6 +145,11 @@ const UpVoteContainer = styled.div`
     padding: 5px;
     color: #2d3436;
     font-weight: bold;
+    min-width: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 `
 
