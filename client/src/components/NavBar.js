@@ -25,6 +25,10 @@ const Nav = styled.ul`
     z-index: 99;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 
+    @media (max-width: 768px) {
+        padding: 1em;
+    }
+
     a {
         text-decoration: none;
         padding: 10px 15px;

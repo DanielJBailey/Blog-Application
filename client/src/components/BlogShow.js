@@ -1,17 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {deleteBlog} from '../reducers/blogs';
+import { deleteBlog } from '../reducers/blogs'
 import styled from 'styled-components'
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 
-
-const BlogShow = ({ blog = {}, blogs = {}, dispatch, history}) => {
+const BlogShow = ({ blog = {}, blogs = {}, dispatch, history }) => {
   let blogsShown = blogs
   // Set the number of sample blogs to show in sidebar
   blogsShown = blogsShown.slice(0, 5)
 
-  const confirm = (id) => {
+  const confirm = id => {
     console.log(history)
     Swal({
       title: 'Are you sure?',
@@ -21,17 +20,11 @@ const BlogShow = ({ blog = {}, blogs = {}, dispatch, history}) => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
+    }).then(result => {
       if (result.value) {
-        Swal(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        ).then(
-          dispatch(deleteBlog(id))
-        ).then(
-          history.push("/")
-        )
+        Swal('Deleted!', 'Your file has been deleted.', 'success')
+          .then(dispatch(deleteBlog(id)))
+          .then(history.push('/'))
       }
     })
   }
@@ -83,14 +76,18 @@ const BlogShow = ({ blog = {}, blogs = {}, dispatch, history}) => {
               </svg>
             </div>
           </SocialBar>
-            {blog.body}
+          {blog.body}
           <AdminBar>
-          <Link to={`/blogs/${blog.id}/edit`}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>
-          </Link>
-          <div onClick={() => confirm(blog.id)}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M381.6 80l-34-56.7C338.9 8.8 323.3 0 306.4 0H205.6c-16.9 0-32.5 8.8-41.2 23.3l-34 56.7H40c-13.3 0-24 10.7-24 24v12c0 6.6 5.4 12 12 12h16.4L76 468.4c2.3 24.7 23 43.6 47.8 43.6h264.5c24.8 0 45.5-18.9 47.8-43.6L467.6 128H484c6.6 0 12-5.4 12-12v-12c0-13.3-10.7-24-24-24h-90.4zm-176-32h100.8l19.2 32H186.4l19.2-32zm182.6 416H123.8L92.6 128h326.7l-31.1 336z"/></svg>
-          </div>
+            <Link to={`/blogs/${blog.id}/edit`}>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
+                <path d='M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z' />
+              </svg>
+            </Link>
+            <div onClick={() => confirm(blog.id)}>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                <path d='M381.6 80l-34-56.7C338.9 8.8 323.3 0 306.4 0H205.6c-16.9 0-32.5 8.8-41.2 23.3l-34 56.7H40c-13.3 0-24 10.7-24 24v12c0 6.6 5.4 12 12 12h16.4L76 468.4c2.3 24.7 23 43.6 47.8 43.6h264.5c24.8 0 45.5-18.9 47.8-43.6L467.6 128H484c6.6 0 12-5.4 12-12v-12c0-13.3-10.7-24-24-24h-90.4zm-176-32h100.8l19.2 32H186.4l19.2-32zm182.6 416H123.8L92.6 128h326.7l-31.1 336z' />
+              </svg>
+            </div>
           </AdminBar>
         </BlogText>
       </BlogBody>
@@ -108,20 +105,14 @@ const AdminBar = styled.div`
   justify-content: flex-end;
   padding: 50px 1em;
   &:hover > svg {
-    fill: rgba(0,0,0,0.7);
+    fill: rgba(0, 0, 0, 0.7);
   }
   svg {
     width: 20px;
     cursor: pointer;
     height: 20px;
-    fill: rgba(0,0,0,0.4);
+    fill: rgba(0, 0, 0, 0.4);
     margin-left: 10px;
-    /* &:first-child:hover {
-      fill: #00b894;
-    }
-    &:last-child:hover {
-      fill: #d63031;
-    }  */
   }
 `
 
@@ -175,14 +166,28 @@ const SideBar = styled.div`
   justify-content: flex-start;
   max-width: 200px;
 
+  @media (max-width: 1000px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    margin: 50px auto;
+  }
   .sample-blog {
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    @media (max-width: 1000px) {
+      width: 50%;
+    }
     &:first-child {
       padding: 0 1em 1em;
+
+      @media (max-width: 1000px) {
+        padding: 1em;
+      }
     }
     .blog-title {
       font-weight: bold;
@@ -220,6 +225,9 @@ const BlogBody = styled.div`
   flex-direction: row;
   max-width: 1200px;
   margin: 0 auto;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `
 
 const BlogText = styled.p`
@@ -230,6 +238,10 @@ const BlogText = styled.p`
   font-size: 22px;
   font-family: 'Crimson Text', serif;
   font-weight: 300;
+  @media(max-width: 1000px) {
+    margin: 50px auto 100px;
+    padding: 0 1em;
+  }
 `
 
 const BlogHeader = styled.div`
@@ -237,6 +249,9 @@ const BlogHeader = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `
 
 const TitleContainer = styled.div`
@@ -259,6 +274,11 @@ const TitleContainer = styled.div`
     line-height: 28px;
     color: rgba(0, 0, 0, 0.54);
   }
+  @media (max-width: 1000px) {
+    padding: 1em;
+    align-items: center;
+    margin: 50px 0;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -267,10 +287,17 @@ const ImageContainer = styled.div`
   img {
     width: 100%;
   }
+  @media (max-width: 1000px) {
+    width: 100%;
+    height: 400px;
+  }
 `
 
 const BlogContainer = styled.div`
   padding: 82px 100px;
+  @media (max-width: 1000px) {
+    padding: 82px 0 0;
+  }
 `
 
 const mapStateToProps = (state, props) => {
