@@ -21,7 +21,7 @@ const Nav = styled.ul`
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    padding: 1em;
+    padding: 1em 100px;
     z-index: 99;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 
